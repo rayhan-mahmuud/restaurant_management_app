@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="card" style="width: 36rem;">
+    <img class="card-img-top" src="{{ item.image }}" alt="{{ item.meal }} image">
+    <div class="card-body">
+        <h1 class="card-title">{{ item.meal }}</h1>
+        <h4 class="card-text">{{ item.description }}</h4>
+        <h3 class="card-text">Price: ${{ item.price }}</h3>
+    </div>
+    <div class="card-body">
+        <a class="card-link btn btn-success" href="{% url 'restaurant_menu:home' %}">Back to Menu</a>
+    </div>
+
+</div>
+
+{% endblock %}

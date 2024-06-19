@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% for it in item_types %}
+    <br/>
+    <h2 class="mb-4">{{ it.1 }}</h2>
+    {% for item in item_list %}
+        {% if item.meal_type == it.0 %}
+            <div class="row justify-content-start mb-3">
+                <div class="col-3">
+                    <img class="card" src="{{ item.image }}" alt="{{item.meal}} image" height="200px"/>
+                </div>
+                <div class="col-4">
+                    <h3>{{ item.meal }}</h3>
+                    <h4>${{ item.price }}</h4>
+                </div>
+                <div class="col-2">
+                    <a class="btn btn-secondary" href=" {% url 'restaurant_menu:details' item.id %} ">More Details</a>
+                </div>
+            </div>
+
+        {% endif %}
+    {% endfor %}
+
+{% endfor %}
+
+{% endblock %}
