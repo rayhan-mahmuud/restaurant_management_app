@@ -7,4 +7,18 @@
         <button type="submit">Sign Up</button>
     </div>
 
+    {% if messages %}
+        {% for message in messages %}
+            <div>
+                <h4>{{ message }}</h4>
+            </div>
+        {% endfor %}
+
+        <div>
+            <a href="{% url 'users:login' %}">Login Now!</a>
+        </div>
+
+    {% endif %}
+
+
 </form>
