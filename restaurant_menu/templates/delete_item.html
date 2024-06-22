@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<form method="post">
+    {% csrf_token %}
+
+    <h4 class="mb-3">Are you sure to delete {{ item.meal }} ?</h4>
+    <img class="card mb-3" src="{{ item.image }}" alt="{{ item.meal }} image" height="250"/>
+    <div class="row">
+        <div class="col-md-1 justify-content-start">
+            <button class="btn btn-danger" type="submit">Delete</button>
+        </div>
+        <div class="col-md-2 justify-content-start">
+            <a class="btn btn-secondary" href="{% url 'restaurant_menu:home' %}">Cancel</a>
+        </div>
+    </div>
+
+</form>
+
+{% endblock %}

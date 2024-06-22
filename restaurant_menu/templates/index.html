@@ -3,25 +3,35 @@
 
 {% for it in item_types %}
     <br/>
-    <h2 class="mb-4">{{ it.1 }}</h2>
-    {% for item in item_list %}
-        {% if item.meal_type == it.0 %}
-            <div class="row justify-content-start mb-3">
-                <div class="col-3">
-                    <img class="card" src="{{ item.image }}" alt="{{item.meal}} image" height="200px"/>
+    <h1 class="mb-4">{{ it.1 }}</h1>
+    <div class="row">
+        {% for item in item_list %}
+            {% if item.meal_type == it.0 %}
+                <div class="col-md-6 mb-3">
+                    <div class="card h-100 d-flex flex-column">
+                        <div class="row no-gutters flex-grow-1">
+                            <div class="col-4">
+                                <img class="card-img" src="{{ item.image }}" alt="{{ item.meal }} image" height="200px"/>
+                            </div>
+                            <div class="col-8 d-flex flex-column">
+                                <div class="card-body">
+                                    <h3 class="card-title">{{ item.meal }}</h3>
+                                    <h4 class="card-text">${{ item.price }}</h4>
+                                </div>
+                                <div class="mt-auto d-flex justify-content-end p-2">
+                                    <a class="btn btn-primary btn-sm ml-3" href="{% url 'restaurant_menu:details' item.id %}">More Details</a>
+                                    {% if user.is_authenticated %}
+                                        <a class="btn btn-secondary btn-sm ml-3" href="{% url 'restaurant_menu:edit_item' item.id %}">Edit</a>
+                                        <a class="btn btn-danger btn-sm ml-3" href="{% url 'restaurant_menu:delete_item' item.id %}">Delete</a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-4">
-                    <h3>{{ item.meal }}</h3>
-                    <h4>${{ item.price }}</h4>
-                </div>
-                <div class="col-2">
-                    <a class="btn btn-secondary" href=" {% url 'restaurant_menu:details' item.id %} ">More Details</a>
-                </div>
-            </div>
-
-        {% endif %}
-    {% endfor %}
-
+            {% endif %}
+        {% endfor %}
+    </div>
 {% endfor %}
 
 {% endblock %}
