@@ -1,24 +1,28 @@
+{% extends 'base_users.html' %}
+{% block content %}
+<h3 class="mt-4 mb-4">Enter valid info below to register: </h3>
+
 <form method="post">
     {% csrf_token %}
 
-    {{ form }}
+    {{ form.as_p }}
 
     <div>
-        <button type="submit">Sign Up</button>
+        <button class="btn btn-success" type="submit">Sign Up</button>
+    </div>
+</form>
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-success" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <div>
+        <a class="btn btn-success" href="{% url 'users:login' %}">Login Now!</a>
     </div>
 
-    {% if messages %}
-        {% for message in messages %}
-            <div>
-                <h4>{{ message }}</h4>
-            </div>
-        {% endfor %}
+{% endif %}
 
-        <div>
-            <a href="{% url 'users:login' %}">Login Now!</a>
-        </div>
-
-    {% endif %}
-
-
-</form>
+{% endblock %}

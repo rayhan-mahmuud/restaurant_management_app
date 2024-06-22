@@ -1,13 +1,20 @@
+{% extends 'base_users.html' %}
+{% block content %}
+
+<h3 class="mt-4 mb-4">Enter your credentials:</h3>
+
 <form method="post">
     {% csrf_token %}
 
-    {{ form }}
+    {{ form.as_p }}
 
     <div>
-        <button type="submit">Login</button>
+        <button class="btn btn-success" type="submit">Login</button>
     </div>
 </form>
 
 <div>
     <a href="{% url 'restaurant_menu:home' %}">Continue without logging in!</a>
 </div>
+
+{% endblock %}
