@@ -24,4 +24,8 @@ class LogoutView(views.View):
         return render(request, 'logout.html')
 
 
+def profile(request):
+    return render(request, 'profile.html')
+
+
 

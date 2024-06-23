@@ -21,7 +21,7 @@ class MenuItem(models.Model):
     meal = models.CharField(max_length=200, unique=True)
     description = models.CharField(max_length=1000)
     meal_type = models.CharField(max_length=200, choices=MEAL_TYPE)
-    status = models.IntegerField(max_length=200, choices=STATUS, default=1)
+    status = models.IntegerField(choices=STATUS, default=1)
     price = models.DecimalField(max_digits=100, decimal_places=2)
     image = models.CharField(max_length=500, default="https://encrypted-tbn0.gstatic.com/images?q=tbn"
                                                      ":ANd9GcS5PTsuRj6pjDdRDNqaC27k705rxveiomd99w&s")

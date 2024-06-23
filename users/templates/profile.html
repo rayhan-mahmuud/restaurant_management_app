@@ -1,0 +1,9 @@
+{% extends 'base_users.html' %}
+{% block content %}
+<h1 class="mt-4 mb-4">Profile</h1>
+<img src="{{ user.profile.image.url }}" height="250 px"/>
+<h2>{{ user.username }}</h2>
+<h3 class="mt-4 mb-4">{{ user.profile.role }}</h3>
+<h3 class="mt-4 mb-4">Location: {{ user.profile.location }}</h3>
+
+{% endblock %}
